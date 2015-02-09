@@ -1,0 +1,577 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{introducao}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+
+    \section{Introdução}
+
+
+    O entendimento da complexidade de algoritmos é uma tarefa chave no
+desenvolvimento de sistemas e algoritmos capazes não apenas de fornecer
+a saída correta, mas de acordo com restrições impostas pelo contexto ou
+pelo domínio. Para exemplificar esta afirmação, tomemos como exemplo um
+algoritmo que precisa encontrar um número \(n\) em um vetor \(D\). O
+algoritmo deve retornar um par (\(a\), \(b\)) onde:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \(a\) : Um valor booleano indicando se o número \(n\) foi encontrado;
+  e
+\item
+  \(b\) : Um número inteiro indicando a posição de \(n\) no vetor.
+\end{itemize}
+
+Uma possível implementação deste algoritmo é a seguinte (em
+pseudo-código).
+
+\textbf{Algoritmo 1.1:}
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int} \NormalTok{i = }\DecValTok{0}\NormalTok{; }
+\FunctionTok{foreach} \NormalTok{(d in D) \{}
+      \KeywordTok{if} \NormalTok{(d == n) \{}
+          \KeywordTok{return} \NormalTok{\{True, d\};}
+      \NormalTok{\}}
+      \NormalTok{i++;}
+\NormalTok{\}}
+\KeywordTok{return} \NormalTok{\{False, }\DecValTok{0}\NormalTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+    Chama-se \textbf{operação fundamental} a operação principal do
+algoritmo. Neste caso, digamos que a operação fundamental é a igualdade
+(comparação) da linha 3.
+
+É possível perceber que a quantidade de \textbf{operações fundamentais}
+varia conforme o tamanho de \(D\) (\(|D|\)). Podemos analisar das
+seguintes formas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Considerando \(n \in D\):
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Se \(|D| = 1\), então a operação fundamental será executada 1 vez; e
+  \item
+    Se \(|D| = 10\), então a operação fundamental será executada, no
+    máximo, 10 vezes.
+  \end{enumerate}
+\item
+  Considerando \(n \not\in D\):
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Independentemente \(|D|\), a operação fundamental será executada
+    \(|D|\) vezes.
+  \end{enumerate}
+\end{enumerate}
+
+** Exercício 1.1:** Considerando as afirmações anteriores, qual a
+diferença entre \(n\) estar no início ou no final de \(D\)? Demonstre e
+justifique a afirmação 1B.
+
+A análise destes casos e a representação disso seguindo um formalismo é
+o que chamamos \textbf{Análise de Algoritmos}. Existem diversas formas
+de analisar algoritmos, ou a computação deles, como considerar o tempo
+de execução e o espaço (a memória necessária para a execução do
+algoritmo). Neste curso estamos mais interessados na primeira forma, a
+análise do tempo de execução.
+
+De modo geral, a análise do comportamento de algoritmos é estudada pela
+\textbf{Complexidade de Algoritmos}. Portanto, \textbf{Complexidade de
+Algoritmos} é a análise do esforço computacional (tempo ou memória)
+necessário para executar um algoritmo.
+
+É importante ter a noção de que, para um determinado problema, podem
+haver diversas implementações.
+
+** Exercício 1.2:** Este exercício será feito em grupo. Cada grupo deve
+escolher uma linguagem ou plataforma diferente (ex.: Java, C++, C\#,
+Javascript, Python etc.). Seu programa deverá ler um arquivo com o
+seguinte formato:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  A primeira linha contém o número \(n\);
+\item
+  A segunda linha possum um número inteiro que corresponde à quantidade
+  de números do conjunto \(D\); e
+\item
+  Da terceira linha em diante, estão os números do conjunto \(D\).
+\end{itemize}
+
+Após ler o arquivo, seu programa deve procurar o número \(n\) no
+conjunto \(D\) e gerar um arquivo texto contendo três números, um em
+cada linha:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  A palavra True ou False, conforme a busca de \(n\) em \(D\);
+\item
+  Um número inteiro que corresponde à posição de \(n\) em \(D\). Se
+  \(n \not\in D\), então o valor pode ser \(0\) (zero); e
+\item
+  Um número real que corresponde ao tempo de execução do programa.
+\end{itemize}
+
+Para verificar corretitude do seu programa, você deve usar os três
+arquivos a seguir:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \url{dataset-1-a.csv}
+\item
+  \url{dataset-1-b.csv}
+\item
+  \url{dataset-1-c.csv}
+\end{enumerate}
+
+
+    \subsection{Complexidade e Desempenho de Algoritmos}
+
+
+    Como você pode perceber, o tempo de execução do algoritmo pode variar
+conforme questões como a plataforma de programação e o ambiente de
+execução (a máquina, em si). É importante entender que este formato não
+pode ser usado como ferramenta para uma análise mais criteriosa e geral
+de algoritmos. Ainda, podemos dizer que a execução do algoritmo depende
+do conjunto de entradas e da sequência de operações fundamentais
+necessárias para o seu funcionamento. Portanto, vamos a alguns
+formalismos:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \(D\) é conjunto de dados de entrada do algoritmo; e
+\item
+  \(E\) é o conjunto de operações fundamentais para o funcionamento do
+  algoritmo.
+\end{itemize}
+
+Assim, podemos definir um algoritmo como a função
+\(a : D \rightarrow E\).
+
+\textbf{Execução} resulta a sequência de execuções de operações
+fundamentais realizadas durante a execução do algoritmo \(a\). É
+representada como \(exec(a) : D \rightarrow E\).
+
+\textbf{Custo} dá o comprimento da sequência \(e \in E\). É representado
+como \(custo : E \rightarrow \mathbb{R}_+\). Ou seja, \textbf{custo} é
+um real positivo que representa a quantidade de operações fundamentais.
+Obviamente, quanto menor a quantidade de operações, menor o custo.
+
+\textbf{Desempenho} dá o custo (em termos das operações fundamentais) da
+execução de \(a\) com a entrada \(d \in D\). É representado como
+\(desempenho(a, d) := custo( exec(a, d) )\). Isso nos permite analisar
+um algoritmo considerando as diversas entradas possíveis e, portanto, o
+desempenho de um algoritmo \(a\) com uma entrada \(d \in D\) mede o
+custo da execução do algoritmo sobre esta entrada.
+
+Se você preferir, também pode usar a notação a seguir:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Algoritmo: \(a(d) = e\). Ou seja, um algoritmo \(a\) é uma função que
+  recebe uma entrada \(d\) e resulta em uma sequência de operações
+  fundamentais \(e\).
+\end{itemize}
+
+É importante perceber que o conceito de \emph{desempenho} indica a
+quantidade de operações fundamentais executadas pelo algoritmo quando a
+entrada é \(d\). Portanto, não se pode, necessariamente, julgar o
+algoritmo como melhor ou pior com base nesta quantiade. Um elemento é o
+fator \emph{tempo}. Considerando, por exemplo, dois algoritmos: \(a_1\)
+e \(a_2\). Ambos executam sobre a mesma entrada \(d\). O algoritmo
+\(a_1\) executa 10 operações fundamentais em 1 segundo. O algoritmo
+\(a_2\) executa a mesma quantidade de operações em 0.5 segundos.
+Portanto, o conceito de \emph{desempenho} visto até o momento é
+dissociado do fator \emph{tempo}. Mais detalhes sobre isso serão vistos
+posteriormente.
+
+\textbf{Exercício 1.3}: O desempenho de um algoritmo sempre cresce com o
+tamanho da entrada? Por quê?
+
+\textbf{Exercício 1.4}: Considere o problema de encontrar o maior valor
+em um conjunto de dados. Conside, também, que haja diversos conjuntos de
+dados, em arquivos texto que contêm os elementos destes conjuntos, um em
+cada linha. Crie um programa que lê cada um dos conjuntos de dados a
+seguir, procura o maior valor e gera um arquivo de saída contendo, em
+cada linha: o maior valor encontrado e o tempo de execução do algoritmo.
+Depois de executar estes experimentos, lendo os arquivos de dados e
+encontrando o maior valor, plote os tempos de execução um gráfico que
+representa a evolução do desempenho (a execução do algoritmo conforme a
+entrada). O que se pode perceber? Comente.
+
+Os conjuntos de dados:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \url{dataset-2-a.csv}
+\item
+  \url{dataset-2-b.csv}
+\item
+  \url{dataset-2-c.csv}
+\item
+  \url{dataset-2-d.csv}
+\item
+  \url{dataset-2-e.csv} ou sua versão compactada (com
+  \textasciitilde{}3,8MB): \url{dataset-2-e.rar}
+\end{itemize}
+
+
+    \subsection{Complexidade de algoritmo}
+
+
+    Embora a função \(complexidade()\) vista anteriormente seja útil como um
+critério para se entender a complexidade de algoritmos, ela não é
+suficiente. A análise do algoritmo 1.1 demonstrou justamente isso: a
+quantidade de operações fundamentais varia conforme a entrada e,
+portanto, a noção atual de desempenho precisa ser complementada.
+
+A função \textbf{tamanho} é definida como: \(tamanho(d) = n\), com
+\(d \in D\). Esta função retorna \(n\): o tamanho (a quantidade de
+elementos) da entrada \(d\).
+
+No caso de a entrada ser uma lista, \(tamanho(d)\) resulta na quantidade
+de elementos da lista. No caso de ser um grafo, a informação pode ser
+composta pela quantidade de vértices e arestas.
+
+\textbf{Exercício 1.5:} Por que é importante a utilização da função
+\(tamanho()\) no estudo da complexidade de um algoritmo?
+
+Utilizando a função \(tamanho(d)\), a função \(desempenho(a, d)\) pode
+ser condensada na função \textbf{avalia}, definida como:
+\(avalia(a, n)\) resulta em um número real que representa uma medida de
+complexidade do algoritmo com base no tamanho da entrada. Este valor
+pode ser entendido como um valor máximo.
+
+Seguindo este raciocínio, a definição de \(avalia(a, n)\) envolve um
+conjunto: todos os desempenhos para entradas de tamanho \(n\). Dado
+\(n \in N\), considere \(D_n\) o conjunto das entradas como tamanho
+\(n\):
+
+\(D_n = \{ d \in D : tamanho(d) = n\}\).
+
+No geral, o desempenho de um algoritmo depende {[}do tamanho{]} da
+entrada. Assim, é razoável considerar o tamanho máximo e médio da
+entrada.
+
+
+    \subsubsection{Complexidade média (ou esperada)}
+
+
+    Considere um algoritmo \(a\) possa receber 100 entradas \(d_j\) de
+tamanho 10 (\(n = 10\)). Cada entrada \(d_j\) possui desempenho \(r_j\).
+Assim, o desempenho esperado é o valor médio dado por:
+
+\(c_M(a, n) = avalia_M(a, n) = \frac{r_1 + r_2 + ... + r_{100}}{100}\)
+
+ou
+
+\(avalia_M(a, n) = \frac{desempenho(a, d_1) + desempenho(a, d_2) + ... + desempenho(a, d_{100})}{100}\).
+
+Em outras palavras, o desempenho esperado considera a média esperada dos
+desempenhos do algoritmo. Neste caso, considera-se que cada uma das
+\(d_j\) entradas possui a mesma probabilidade de ocorrer, ou seja, segue
+uma \emph{distribuição uniforme}.
+
+De maneira geral, a \emph{complexidade média (ou esperada)} de um
+algoritmo é dada por:
+
+\(avalia_M(a, n) = \sum_{d \in D_n}{} (prob(d) \times desempenho(a, d))\)
+
+onde \(prob(d)\) dá a probabilidade de ocorrer a entrada \(d\) no
+conjunto \(D_n\).
+
+\textbf{Exercício 1.6}: Considere um algorimto \(a\) cujo desempenho
+sobre cada entrada é o tamanho da entrada. Determine sua complexidade
+média \(avalia_M(a, 50)\) considerando distribuição uniforme.
+
+
+    \subsubsection{Complexidade pessimista (pior caso)}
+
+
+    O algoritmo do \textbf{Exercício 1.6} possui uma característia
+interessante: o desempenho do alogoritmo sobre cada entrada é o tamanho
+da entrada. Assim, o seu pior desempenho sobre entradas com tamanho até
+20 será 20:
+
+\(avalia(a, [1, 2, ..., 20]) = {\mathrm{max}} \{1, 2, ..., 20\} = 20\)
+
+A \emph{complexidade pessimista} de um algoritmo fornece o seu
+desempenho no pior caso (ou o pior desempenho que se pode esperar) e é
+definida como:
+
+\(avalia_P(a, n) = \mathrm{max} \frac{desempenho(a, d) \in \mathrm(R)}{d \in D_n}\).
+
+Em outras palavras, a \emph{complexidade pessimista} de um algoritmo
+\(a\) é o valor máximo de seus desempenhos sobre todas as entradas com
+tamanho \(n\).
+
+\textbf{Exercício 1.7:} Considere o algoritmo abaixo:
+
+\textbf{Algoritmo 1.2}: encontrar o máximo valor na lista
+
+    \begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n = }\FunctionTok{tamanho}\NormalTok{(lista);}
+\NormalTok{max = lista[}\DecValTok{1}\NormalTok{];}
+\KeywordTok{for}\NormalTok{(i = }\DecValTok{2}\NormalTok{; i < n; i++) \{}
+    \KeywordTok{if} \NormalTok{(max < lista[i]) \{}
+        \NormalTok{max = lista[i];}
+    \NormalTok{\}}
+\NormalTok{\}}
+\KeywordTok{return} \NormalTok{max;}
+\end{Highlighting}
+\end{Shaded}
+
+    Determine a \emph{complexidade pessimista} \(avalia_P(a, 20)\).
+
+\textbf{Exercício 1.8:} Como poderia ser definida a \emph{complexidade
+otimista}? Discuta a sua utilidade.
+
+\textbf{Exercício 1.9:} Determine as complexidades média e pessimista do
+\textbf{Algoritmo 1.1}.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

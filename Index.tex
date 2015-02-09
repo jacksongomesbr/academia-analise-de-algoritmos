@@ -90,7 +90,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{Introdu??o}
+    \title{Index}
     
     
     
@@ -224,222 +224,23 @@
 
     
 
-    \section{Introdução}
+    \section{Complexidade de Algoritmos}
 
 
-    O entendimento da complexidade de algoritmos é uma tarefa chave no
-desenvolvimento de sistemas e algoritmos capazes não apenas de fornecer
-a saída correta, mas de acordo com restrições impostas pelo contexto ou
-pelo domínio. Para exemplificar esta afirmação, tomemos como exemplo um
-algoritmo que precisa encontrar um número \(n\) em um vetor \(D\). O
-algoritmo deve retornar um par (\(a\), \(b\)) onde:
+    Complexidade de um algoritmo reflete o esforço computacional requerido
+para executá-lo.
 
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \(a\) : Um valor booleano indicando se o número \(n\) foi encontrado;
-  e
-\item
-  \(b\) : Um número inteiro indicando a posição de \(n\) no vetor.
-\end{itemize}
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{latex}
+        \PY{err}{\PYZdl{}}\PY{err}{\PYZdl{}}\PY{n}{c} \PY{o}{=} \PY{l+m+mi}{1} \PY{o}{+} \PY{l+m+mi}{2}\PY{err}{\PYZdl{}}\PY{err}{\PYZdl{}}
+\end{Verbatim}
 
-Uma possível implementação deste algoritmo é a seguinte (em
-pseudo-código):
+    
+        \begin{equation*}
+        c = 1 + 2
+        \end{equation*}
 
-    \begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{int} \NormalTok{i = }\DecValTok{0}\NormalTok{; }
-\FunctionTok{foreach} \NormalTok{(d in D) \{}
-      \KeywordTok{if} \NormalTok{(d == n) \{}
-          \KeywordTok{return} \NormalTok{\{True, d\};}
-      \NormalTok{\}}
-      \NormalTok{i++;}
-\NormalTok{\}}
-\KeywordTok{return} \NormalTok{\{False, }\DecValTok{0}\NormalTok{\};}
-\end{Highlighting}
-\end{Shaded}
-
-    Chama-se \textbf{operação fundamental} a operação principal do
-algoritmo. Neste caso, digamos que a operação fundamental é a igualdade
-(comparação) da linha 3.
-
-É possível perceber que a quantidade de \textbf{operações fundamentais}
-varia conforme o tamanho de \(D\) (\(|D|\)). Podemos analisar das
-seguintes formas:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Considerando \(n \in D\):
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-    Se \(|D| = 1\), então a operação fundamental será executada 1 vez; e
-  \item
-    Se \(|D| = 10\), então a operação fundamental será executada, no
-    máximo, 10 vezes.
-  \end{enumerate}
-\item
-  Considerando \(n \ni D\):
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-    Independentemente \(|D|\), a operação fundamental será executada
-    \(|D|\) vezes.
-  \end{enumerate}
-\end{enumerate}
-
-** Exercício 1.1:** Considerando as afirmações anteriores, qual a
-diferença entre \(n\) estar no início ou no final de \(D\)? Demonstre e
-justifique a afirmação 1B.
-
-A análise destes casos e a representação disso seguindo um formalismo é
-o que chamamos \textbf{Análise de Algoritmos}. Existem diversas formas
-de analisar algoritmos, ou a computação deles, como considerar o tempo
-de execução e o espaço (a memória necessária para a execução do
-algoritmo). Neste curso estamos mais interessados na primeira forma, a
-análise do tempo de execução.
-
-De modo geral, a análise do comportamento de algoritmos é estudada pela
-\textbf{Complexidade de Algoritmos}. Portanto, \textbf{Complexidade de
-Algoritmos} é a análise do esforço computacional (tempo ou memória)
-necessário para executar um algoritmo.
-
-É importante ter a noção de que, para um determinado problema, podem
-haver diversas implementações.
-
-** Exercício 1.2:** Este exercício será feito em grupo. Cada grupo deve
-escolher uma linguagem ou plataforma diferente (ex.: Java, C++, C\#,
-Javascript, Python etc.). Seu programa deverá ler um arquivo com o
-seguinte formato:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  A primeira linha contém o número \(n\);
-\item
-  A segunda linha possum um número inteiro que corresponde à quantidade
-  de números do conjunto \(D\); e
-\item
-  Da terceira linha em diante, estão os números do conjunto \(D\).
-\end{itemize}
-
-Após ler o arquivo, seu programa deve procurar o número \(n\) no
-conjunto \(D\) e gerar um arquivo texto contendo três números, um em
-cada linha:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  A palavra True ou False, conforme a busca de \(n\) em \(D\);
-\item
-  Um número inteiro que corresponde à posição de \(n\) em \(D\). Se
-  \(n \ni D\), então o valor pode ser \(0\) (zero); e
-\item
-  Um número real que corresponde ao tempo de execução do programa.
-\end{itemize}
-
-Para verificar corretitude do seu programa, você deve usar os três
-arquivos a seguir:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \url{dataset-1-a.csv}
-\item
-  \url{dataset-1-b.csv}
-\item
-  \url{dataset-1-c.csv}
-\end{enumerate}
-
-
-    \subsection{Complexidade e Desempenho de Algoritmos}
-
-
-    Como você pode perceber, o tempo de execução do algoritmo pode variar
-conforme questões como a plataforma de programação e o ambiente de
-execução (a máquina, em si). É importante entender que este formato não
-pode ser usado como ferramenta para uma análise mais criteriosa e geral
-de algoritmos. Ainda, podemos dizer que a execução do algoritmo depende
-do conjunto de entradas e da sequência de operações fundamentais
-necessárias para o seu funcionamento. Portanto, vamos a alguns
-formalismos:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \(D\) é conjunto de dados de entrada do algoritmo; e
-\item
-  \(E\) é o conjunto de operações fundamentais para o funcionamento do
-  algoritmo.
-\end{itemize}
-
-Assim, podemos definir um algoritmo como a função
-\(a : D \rightarrow E\).
-
-\textbf{Execução} resulta a sequência de execuções de operações
-fundamentais realizadas durante a execução do algoritmo \(a\). É
-representada como \(exec[a] : D \rightarrow E\).
-
-\textbf{Custo} dá o comprimento da sequência \(e \in E\). É representado
-como \(custo : E \rightarrow \mathbb{R}_+\). Ou seja, \textbf{custo} é
-um real positivo que representa a quantidade de operações fundamentais.
-Obviamente, quanto menor a quantidade de operações, menor o custo.
-
-\textbf{Desempenho} dá o custo (em termos das operações fundamentais) da
-execução de \(a\) com a entrada \(d \in D\). É representado como
-\(desempenho[a](d) := custo( exec[a](d) )\). Isso nos permite analisar
-um algoritmo considerando as diversas entradas possíveis e, portanto, o
-desempenho de um algoritmo \(a\) com uma entrada \(d \in D\) mede o
-custo da execução do algoritmo sobre esta entrada.
-
-Se você preferir, também pode usar a notação a seguir:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Algoritmo: \(a(d) = e\). Ou seja, um algoritmo \(a\) é uma função que
-  recebe uma entrada \(d\) e resulta em uma sequência de operações
-  fundamentais \(e\).
-\end{itemize}
-
-\textbf{Exercício 1.3}: O desempenho de um algoritmo sempre cresce com o
-tamanho da entrada? Por quê?
-
-\textbf{Exercício 1.4}: Considere o problema de encontrar o maior valor
-em um conjunto de dados. Conside, também, que haja diversos conjuntos de
-dados, em arquivos texto que contêm os elementos destes conjuntos, um em
-cada linha. Crie um programa que lê cada um dos conjuntos de dados a
-seguir, procura o maior valor e gera um arquivo de saída contendo, em
-cada linha: o maior valor encontrado e o tempo de execução do algoritmo.
-Depois de executar estes experimentos, lendo os arquivos de dados e
-encontrando o maior valor, plote os tempos de execução um gráfico que
-representa a evolução do desempenho (a execução do algoritmo conforme a
-entrada). O que se pode perceber? Comente.
-
-Os conjuntos de dados:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  \url{dataset-2-a.csv}
-\item
-  \url{dataset-2-b.csv}
-\item
-  \url{dataset-2-c.csv}
-\item
-  \url{dataset-2-d.csv}
-\item
-  \url{dataset-2-e.csv} ou sua versão compactada (com
-  \textasciitilde{}3,8MB): \url{dataset-2-e.rar}
-\end{itemize}
-
+    
 
     % Add a bibliography block to the postdoc
     
